@@ -22,6 +22,24 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     /*
         @NativeQuery, named query,  join-uri  (Client -> Car -> Color),  @Transcational -> exceptii
+
+        Flyway
+        Lombok
+        Scopes
+        method injection
+        Lifecycle Callbacks - @PostConstruct, @PreDestroy
+        @Configuration, @Bean - props on @Bean
+        Scoped Beans as Dependencies - e.g. injecting request scoped into singleton
+        Inject Lists, Sets, Maps<String, ?>, Optional
+        @Primary, @Qualifier
+        @Value
+        @Component: @Service, @Repository, @Controller, etc.
+        AutoConfigurations
+
+
+
+        Rest: @ModelAttribute, @RequestBody, @ExceptionHandler
+        1.3.3 - HandlerMethods
      */
 
 }
