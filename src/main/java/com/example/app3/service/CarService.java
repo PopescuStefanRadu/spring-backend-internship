@@ -7,6 +7,7 @@ import com.example.app3.repository.CarRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CarService {
@@ -26,7 +27,7 @@ public class CarService {
     }
 
     public List<CarModel> getAllCarsAsModelOneQuery() {
-        return carRepository.findAllStreamableOrderByIdOneQuery().map(CarMapper::entityToModel).toList();
+        return carRepository.findAllOrderByIdOneQuery().stream().map(CarMapper::entityToModel).collect(Collectors.toList());
     }
 
 
