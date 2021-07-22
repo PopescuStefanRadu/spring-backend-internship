@@ -1,14 +1,20 @@
-package com.example.app3.repository;
+package com.example.app3.repository.cassandra;
 
 import com.example.app3.entity.User;
+import com.example.app3.repository.UserRepository;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
+//@Primary
 public class CassandraUserRepository implements UserRepository {
 
     @Override
@@ -53,7 +59,7 @@ public class CassandraUserRepository implements UserRepository {
 
     @Override
     public List<String> getAllUserHashes() {
-        return null;
+        return List.of("hi", "mom");
     }
 
     @Override
@@ -64,6 +70,16 @@ public class CassandraUserRepository implements UserRepository {
     @Override
     public int countByStatus(String status) {
         return 0;
+    }
+
+    @Override
+    public Optional<User> findById(Long id) {
+        return Optional.empty();
+    }
+
+    @Override
+    public boolean existsById(Long aLong) {
+        return false;
     }
 
     @Override
@@ -112,29 +128,10 @@ public class CassandraUserRepository implements UserRepository {
     }
 
     @Override
-    public void deleteAll() {
-
-    }
-
-    @Override
-    public <S extends User> S save(S entity) {
-        return null;
-    }
-
-    @Override
     public <S extends User> List<S> saveAll(Iterable<S> entities) {
         return null;
     }
 
-    @Override
-    public Optional<User> findById(Long aLong) {
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean existsById(Long aLong) {
-        return false;
-    }
 
     @Override
     public void flush() {
@@ -204,5 +201,15 @@ public class CassandraUserRepository implements UserRepository {
     @Override
     public <S extends User> boolean exists(Example<S> example) {
         return false;
+    }
+
+    @Override
+    public <S extends User> S save(S entity) {
+        return null;
+    }
+
+    @Override
+    public void deleteAll() {
+
     }
 }

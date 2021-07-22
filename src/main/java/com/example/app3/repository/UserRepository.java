@@ -1,12 +1,15 @@
 package com.example.app3.repository;
 
 import com.example.app3.entity.User;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+@Primary
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByAge(Integer age);  //select * from user where age = ...
     List<User> findByStatus(String status);
@@ -23,6 +26,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     void deleteByAge(String age); //delete * from user where age=...
     int countByStatus(String status); //select count(*) from user where status= 'incomplete'
+
+    Optional<User> findById(Long id);
 
 
     /*

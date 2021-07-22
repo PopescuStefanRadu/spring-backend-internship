@@ -1,10 +1,7 @@
 package com.example.app3.config;
 
-import com.example.app3.repository.UserRepository;
-import com.example.app3.repository.CassandraUserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
@@ -15,17 +12,17 @@ public class RestTemplateConfig {
         return new RestTemplate();
     }
 
-    @Bean
-    @Primary
-    public UserRepository userRepositoryCassandra() {
-        return new CassandraUserRepository();
-        // DAO - data access object
-        // abstractizare asupra accesului catre DB
-        // pot sa schimb oricand implementarea specifica a DB
-
-
-        // Dependency injection
-        // nu am dat new CassandraUserRepository() sau new JdbcUserRepository() peste tot si sa il schimb peste tot
-        // injectat dependenta + abstractizat contractul ( folosit interfata nu direct XRepository)
-    }
+//    @Bean
+//    @Primary
+//    public UserRepository userRepositoryCassandra() {
+//        return new CassandraUserRepository();
+//        // DAO - data access object
+//        // abstractizare asupra accesului catre DB
+//        // pot sa schimb oricand implementarea specifica a DB
+//
+//
+//        // Dependency injection
+//        // nu am dat new CassandraUserRepository() sau new JdbcUserRepository() peste tot si sa il schimb peste tot
+//        // injectat dependenta + abstractizat contractul ( folosit interfata nu direct XRepository)
+//    }
 }
