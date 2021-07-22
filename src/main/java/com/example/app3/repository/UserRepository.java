@@ -2,6 +2,7 @@ package com.example.app3.repository;
 
 import com.example.app3.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,12 +17,21 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByOrderByIdDesc(); //select * from user order by id desc;
     List<User> findTop10ByOrderByAgeDesc(); //select * from user order by age desc;
 
+
+    @Query(value = "SELECT MD5(concat(id,'-', name, '-', age)) FROM my_user", nativeQuery = true)
+    List<String> getAllUserHashes();
+
     void deleteByAge(String age); //delete * from user where age=...
     int countByStatus(String status); //select count(*) from user where status= 'incomplete'
 
 
     /*
-        @NativeQuery, named query,  join-uri  (Client -> Car -> Color),  @Transcational -> exceptii
+        @NativeQuery, named query,  join-uri  (Client -> Car -> Color),
+
+
+
+
+        @Transcational -> exceptii
 
         Flyway
         Lombok
@@ -40,6 +50,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
         Rest: @ModelAttribute, @RequestBody, @ExceptionHandler
         1.3.3 - HandlerMethods
+
+
+        TODO NamedQuery =? creeaza PreparedStmt?
      */
 
 }

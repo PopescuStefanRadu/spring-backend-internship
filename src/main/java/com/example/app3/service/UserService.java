@@ -2,7 +2,9 @@ package com.example.app3.service;
 
 import com.example.app3.entity.User;
 import com.example.app3.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Comparator;
 import java.util.List;
@@ -10,13 +12,11 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
 
     private final UserRepository userRepository;
-
-    public UserService(final UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    private final RestTemplate restTemplate;
 
     public User getUserById(Long id) {
         return userRepository.findById(id).orElseGet(User::new);
@@ -58,5 +58,14 @@ public class UserService {
 
     public void deleteAllUsers() {
         userRepository.deleteAll();
+    }
+
+    public List<String> getUserHashes() {
+        return userRepository.getAllUserHashes();
+    }
+
+    public void getUserHashesFromExternalApp() {
+        String result = restTemplate.getForObject("http://localhost:8082/api/user/userHashes", String.class);
+        System.out.println(result);
     }
 }

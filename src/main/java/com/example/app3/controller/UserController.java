@@ -1,20 +1,19 @@
 package com.example.app3.controller;
 
 import com.example.app3.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/user")
+@RequiredArgsConstructor
 public class UserController {
 
-    private UserService userService;
-
-    public UserController(final UserService userService) {
-        this.userService = userService;
-    }
-
+    private final UserService userService;
     //variabila de cale:  PathVariable   ;   user/number/1    user/number/7340
 
     @GetMapping("/dashboard")
@@ -66,4 +65,10 @@ public class UserController {
         return "redirect:/user/dashboard";  //redirect:/ -> controller-ul la care sa ne duca
     }
 
+    @GetMapping("/userHashes")
+    public String getUserHashes(Model model) {
+        List<String> allUserHashes = userService.getUserHashes();
+        model.addAttribute("allUserHashes", allUserHashes);
+        return "allUserHashes";  //redirect:/ -> controller-ul la care sa ne duca
+    }
 }
