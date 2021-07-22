@@ -2,6 +2,7 @@ package com.example.app3.repository;
 
 import com.example.app3.entity.User;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -9,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-@Primary
+@Profile("jdbc")
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByAge(Integer age);  //select * from user where age = ...
     List<User> findByStatus(String status);
@@ -31,24 +32,31 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 
     /*
-        @NativeQuery, named query,  join-uri  (Client -> Car -> Color),
+        X @NativeQuery, -> Query(native = true)
+//        named query,
+
+        join-uri  (Client -> Car -> Color),
 
 
 
 
         @Transcational -> exceptii
 
-        Flyway
-        Lombok
-        Scopes
+        X Flyway
+        X  Lombok
+        XScopes
         method injection
-        Lifecycle Callbacks - @PostConstruct, @PreDestroy
-        @Configuration, @Bean - props on @Bean
+        X Lifecycle Callbacks - @PostConstruct, @PreDestroy
+        X @Configuration, @Bean - props on @Bean
         Scoped Beans as Dependencies - e.g. injecting request scoped into singleton
         Inject Lists, Sets, Maps<String, ?>, Optional
-        @Primary, @Qualifier
-        @Value
-        @Component: @Service, @Repository, @Controller, etc.
+        X @Primary
+
+        @Qualifier
+        X @Value
+        X @ConfigurationProperties
+
+        X @Component: @Service, @Repository, @Controller, etc.
         AutoConfigurations
 
 

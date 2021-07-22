@@ -3,6 +3,7 @@ package com.example.app3.repository.cassandra;
 import com.example.app3.entity.User;
 import com.example.app3.repository.UserRepository;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +16,7 @@ import java.util.Optional;
 
 @Repository
 //@Primary
+@Profile("cassandra")
 public class CassandraUserRepository implements UserRepository {
 
     @Override
