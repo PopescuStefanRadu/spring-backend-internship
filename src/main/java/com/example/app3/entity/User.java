@@ -1,5 +1,9 @@
 package com.example.app3.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,6 +11,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "my_user")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -22,35 +29,4 @@ public class User {
     @Column(name="status")
     private String status;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(final Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(final String name) {
-        this.name = name;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(final Integer age) {
-        this.age = age;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(final String status) {
-        this.status = status;
-    }
 }

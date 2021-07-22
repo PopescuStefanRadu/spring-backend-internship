@@ -1,12 +1,10 @@
 package com.example.app3.repository;
 
 import com.example.app3.entity.User;
-import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,6 +64,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
 
         TODO NamedQuery =? creeaza PreparedStmt?
+        de ce resource, wtf REST?
      */
 
 }

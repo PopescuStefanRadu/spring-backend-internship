@@ -1,9 +1,15 @@
 package com.example.app3.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Car {
 
     @Id
@@ -11,27 +17,7 @@ public class Car {
     private String name;
     private String color;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(final Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(final String name) {
-        this.name = name;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(final String color) {
-        this.color = color;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "rental_user")
+    private User tenant;
 }
