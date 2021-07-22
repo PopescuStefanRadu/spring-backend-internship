@@ -5,10 +5,9 @@ import com.example.app3.model.ClientModel;
 
 public class ClientMapper {
     public static ClientModel entityToModel(Client client) {
-        ClientModel clientModel = new ClientModel();
-        clientModel.setId(client.getId());
-        clientModel.setName(client.getName());
-
-        return clientModel;
+        return ClientModel.builder()
+                .id(client.getId())
+                .name(client.getName())
+                .build();
     }
 }
