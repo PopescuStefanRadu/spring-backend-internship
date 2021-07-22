@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+Bine ai venit in car homepage!
+
+
+<!--      car model ca in controller pe @ModelAttribute-->
+
+<form th:action="@{/car/save}"
+      th:object="${carModel}"
+        method="post">
+<label for="id">Id</label> <br>
+
+<input type="number" id="id" th:field="*{id}"> <br><br>
+
+<label for="name">Name</label> <br>
+<input type="text" id="name" th:field="*{name}"> <br><br>
+
+<label for="color">Color</label> <br>
+<input type="text" id="color" th:field="*{color}"> <br><br>
+
+<button type="submit">SAVE</button>
+</form>
+
+
+<hr>
+Acestea sunt toate masinile:
+<div th:each="car : ${allCars}">
+    <span th:text="|- masina cu id-ul ${car.id} si cu numele ${car.name} si culoarea ${car.color}|"></span>
+</div>
+
+
+</body>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+</html>

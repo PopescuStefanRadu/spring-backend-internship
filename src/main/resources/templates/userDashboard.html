@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>welcome!</h1>
+<div th:text="${favNumber}"></div>
+<div th:text="${favClient}"></div>
+
+
+<a th:href="@{/user/number/1}">go to client 1</a> <br><br>
+<a th:href="@{/user/number/2}">go to client 2</a> <br><br>
+<a th:href="@{/user/number/10}">go to client 10</a> <br><br>
+
+
+<a th:href="@{/user/age?age=31}">go to client with age 31 with request param</a> <br><br>
+
+
+<a th:href="@{/user/status?status=active}">get active users</a> <br><br>
+<a th:href="@{/user/status?status=inactive}">get inactive users</a> <br><br>
+
+<a th:href="@{/user/favorite/1/Alex?status=active&isHotOutside=true}">Something</a> <br><br>
+
+<a th:href="@{/user/saveMyUser}">Insert into DB</a> <br><br>
+
+
+<a th:href="@{/user/deleteAllUsers}">Delete all users</a> <br><br>
+
+
+<div>
+    <ul>
+        <li th:each="user: ${allUsers}">
+            <span th:text="|${user.id} - ${user.name} - ${user.age}|"></span>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

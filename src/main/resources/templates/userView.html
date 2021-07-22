@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--id vine din Path  -->
+<h1>AI CAUTAT CLIENTUL CU ID-ul <span th:text="${id}"></span></h1>
+
+
+<div th:if="${userById.name != null or userById.age != null}"
+        th:text="|user cu numele ${userById.name} si cu varsta ${userById.age}|"></div>
+
+<div th:if="${userById.name == null and userById.age == null}"> Nu exista un user cu id-ul cautat </div>
+
+<a th:href="@{/user/dashboard}">back to dashboard</a>
+
+</body>
+</html>

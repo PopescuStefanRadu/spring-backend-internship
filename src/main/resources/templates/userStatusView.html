@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+Userii cu status <span th:text="${status}"></span>
+
+<ul>
+    <li th:each="user : ${usersByStatus}">
+        <span th:text="${user.name}"></span>
+    </li>
+</ul>
+
+<br><br>
+<a th:href="@{/user/dashboard}">Go home</a>
+
+</body>
+</html>

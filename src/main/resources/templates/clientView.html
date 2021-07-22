@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Client webpage
+
+<!--<div th:text="${myClient.name}"></div>-->
+
+<ul>
+<!--     [1,alex,   2, claudia ... ]-->
+    <li th:each="clientModel: ${allClients}">
+        <span th:text="|clientul cu numele ${clientModel.name} si id-ul ${clientModel.id}|"></span>
+    </li>
+</ul>
+</body>
+</html>
