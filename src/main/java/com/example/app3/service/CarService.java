@@ -5,11 +5,12 @@ import com.example.app3.mapper.CarMapper;
 import com.example.app3.model.CarModel;
 import com.example.app3.repository.CarRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class CarService {
 
     private final CarRepository carRepository;
@@ -26,17 +27,24 @@ public class CarService {
         return carRepository.findAllStreamableOrderById().map(CarMapper::entityToModel).toList();
     }
 
-    public List<CarModel> getAllCarsAsModelOneQuery() {
-        return carRepository.findAllOrderByIdOneQuery().stream().map(CarMapper::entityToModel).collect(Collectors.toList());
-    }
-
-
+    /// try {
+    // jta.startTransaction
+    // save()
+    // jta.commit()
+    // } catch () {
+    // ????
+    // jta.rollback()
+    // }
+    ///
     public void save(final CarModel carModel) {
         Car car = new Car();
         car.setId(carModel.getId());
         car.setName(carModel.getName());
         car.setColor(carModel.getColor());
-
-        carRepository.save(car);
     }
+
+    public Car getCarById(Long carId) {
+        return carRepository.getById(carId);
+    }
+    // finally
 }

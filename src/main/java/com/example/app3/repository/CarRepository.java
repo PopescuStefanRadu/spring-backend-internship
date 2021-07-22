@@ -14,10 +14,4 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
     @Query("SELECT c FROM Car c ORDER BY c.id DESC") // JPQL
     Streamable<Car> findAllStreamableOrderById();
-
-
-
-    // TODO Fix ManyToOne JOIN FETCH
-    @Query(value = "SELECT c FROM Car c LEFT JOIN FETCH User u ON c.tenant=u ORDER BY c.id DESC") // JPQL
-    List<Car> findAllOrderByIdOneQuery();
 }

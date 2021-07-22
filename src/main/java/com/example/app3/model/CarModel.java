@@ -18,5 +18,4 @@ public class CarModel {
     private Long id;
     private String name;
     private String color;
-    private Optional<UserModel> tenantModel;
 }

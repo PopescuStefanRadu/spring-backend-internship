@@ -33,7 +33,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
         X @NativeQuery, -> Query(native = true)
 //        named query,
 
-        join-uri  (Client -> Car -> Color),
+        X join-uri  (Client -> Car -> Color),
 
 
 

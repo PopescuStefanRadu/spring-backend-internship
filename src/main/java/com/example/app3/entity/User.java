@@ -28,5 +28,4 @@ public class User {
 
     @Column(name="status")
     private String status;
-
 }

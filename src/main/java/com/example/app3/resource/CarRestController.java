@@ -20,9 +20,4 @@ public class CarRestController {
         return carService.getAllCarsAsModel();
     }
 
-
-    @GetMapping("/onequery")
-    List<CarModel> getAllCarsOneQuery() {
-        return carService.getAllCarsAsModelOneQuery();
-    }
 }

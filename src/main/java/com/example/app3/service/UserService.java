@@ -70,7 +70,7 @@ public class UserService {
     }
 
     public void getUserHashesFromExternalApp() {
-        String result = restTemplate.getForObject(kauflandApiBaseUrl + "/user/userHashes", String.class);
+        String result = restTemplate.getForObject(kauflandApiBaseUrl + "/user/userHashes", String.class); // * 1000
         System.out.println(result);
     }
 }
